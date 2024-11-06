@@ -45,7 +45,7 @@ sed -i 's/androidboot.hypervisor.protected_vm.supported=0/androidboot.hypervisor
 repack_args='python3 mkbootimg/mkbootimg.py --vendor_boot vendor_boot_mod.img '$mkbootimg_args
 echo $repack_args
 eval $repack_args
-echo "Donw."
+echo "Done."
 
 echo "Resign vendor_boot"
 # resign modified vendor_boot
