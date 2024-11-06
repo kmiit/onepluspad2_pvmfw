@@ -1,15 +1,18 @@
-Port pvmfw from OnePlus 13 to 12 with github action
+Port pvmfw from OnePlus 13 to Pad with github action
 =============================================================
+
+> # !Attention:
+> ## Haven't test on my device!
 
 Features
 ========
-- Port pvmfw from OnePlus 13 to OnePlus 12
+- Port pvmfw from OnePlus 13 to OnePlus Pad Pro (Pad 2)
 - Microdroid works
 
 Attention
 ========
 - Backup your data
-- The modified images you flash need to be the same as the OS version your OnePlus 12 is running
+- The modified images you flash need to be the same as the OS version your OnePlus Pad Pro is running
 
 Guide
 ======
@@ -20,12 +23,12 @@ Guide
     ![Workflow](https://docs.github.com/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
 1. Above the list of workflow runs, select **Run workflow**
     ![Run Workflow](https://docs.github.com/assets/images/help/actions/actions-workflow-dispatch.png)
-1. Input your rom url of OnePlus 12 and OnePlus 13 and click **Run workflow**
+1. Input your rom url of OnePlus Pad Pro and OnePlus 13 and click **Run workflow**
     ![Run Workflow](https://docs.github.com/assets/images/help/actions/workflow-dispatch-inputs.png)
 1. Wait for the action to complete and download the artifact **DO NOT download it via multithread downloaders like IDM or ADM**
     ![Download](https://docs.github.com/assets/images/help/repository/artifact-drop-down-updated.png)
 1. Unzip the artifact named output
-1. Backup your data first, and flash images to your OnePlus 12
+1. Backup your data first, and flash images to your OnePlus Pad Pro
 ```
 //Flash images
 fastboot flash pvmfw pvmfw.img
