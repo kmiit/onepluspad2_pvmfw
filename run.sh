@@ -4,15 +4,25 @@
 git submodule update --depth=1
 echo "Init repository done"
 
-echo "Start downloading fw files"
+echo "Start downloading Oneplus 13 fw files"
 # unpack images from oneplus 13 rom
 mkdir op13
-payload_dumper --partitions pvmfw,vbmeta,vbmeta_system,vbmeta_vendor --out op13 $OP13_ROM_URL
+op13_partitions=("pvmfw" "vbmeta" "vbmeta_system" "vbmeta_vendor")
+for partition in "${op13_partitions[@]}"; do
+payload_dumper --partitions ${partition} --out op13 $OP13_ROM_URL
+echo "${partition} download finished."
+done
 echo "Download Oneplus 13 fw done."
 
 # unpack images from oneplus pad pro rom
+echo "Start downloading Oneplus Pad Pro fw files"
 mkdir opad
-payload_dumper --partitions system,system_ext,product,vbmeta,vbmeta_system,vbmeta_vendor,vendor_boot --out opad $OPAD_ROM_URL
+
+opad_partitions=("system" "system_ext" "product" "vbmeta" "vbmeta_system" "vbmeta_vendor" "vendor_boot")
+for partition in "${opad_partitions[@]}"; do
+payload_dumper --partitions ${partition} --out opad $OPAD_ROM_URL
+echo "${partition} download finished."
+done
 echo "Download Oneplus Pad Pro fw done."
 
 echo "Resign vbmeta"
