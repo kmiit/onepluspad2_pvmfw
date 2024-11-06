@@ -1,29 +1,38 @@
 #!/bin/bash
+sudo apt update -y
+sudo apt remove -y firefox
+sudo apt install aria2 -y
+
+aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $OP13_ROM_URL -o "op13.zip"
+aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $OPAD_ROM_URL -o "opad.zip"
 
 # git clone --depth 1 https://android.googlesource.com/platform/system/tools/mkbootimg
 git submodule update --depth=1
 echo "Init repository done"
 
-echo "Start downloading Oneplus 13 fw files"
+echo "Start dumping Oneplus 13 fw files"
 # unpack images from oneplus 13 rom
+
 mkdir op13
 op13_partitions=("pvmfw" "vbmeta" "vbmeta_system" "vbmeta_vendor")
 for partition in "${op13_partitions[@]}"; do
-python -m payload_dumper --partitions ${partition} --out op13 $OP13_ROM_URL
-echo "${partition} download finished."
+python -m payload_dumper --partitions ${partition} --out op13 "op13.zip"
+echo "${partition} dump finished."
 done
-echo "Download Oneplus 13 fw done."
+echo "Dump Oneplus 13 fw done."
+rm op13.zip
 
 # unpack images from oneplus pad pro rom
-echo "Start downloading Oneplus Pad Pro fw files"
+echo "Start dumping Oneplus Pad Pro fw files"
 mkdir opad
 
 opad_partitions=("system" "system_ext" "product" "vbmeta" "vbmeta_system" "vbmeta_vendor" "vendor_boot")
 for partition in "${opad_partitions[@]}"; do
-python -m payload_dumper --partitions ${partition} --out opad $OPAD_ROM_URL
-echo "${partition} download finished."
+python -m payload_dumper --partitions ${partition} --out opad "opad.zip"
+echo "${partition} dump finished."
 done
-echo "Download Oneplus Pad Pro fw done."
+echo "Dump Oneplus Pad Pro fw done."
+rm opad.zip
 
 echo "Resign vbmeta"
 # resign vbmeta_system of oneplus pad pro with pvmfw
