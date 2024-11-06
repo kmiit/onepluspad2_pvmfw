@@ -6,8 +6,7 @@ sudo apt install aria2 -y
 aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $OP13_ROM_URL -o "op13.zip"
 aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $OPAD_ROM_URL -o "opad.zip"
 
-# git clone --depth 1 https://android.googlesource.com/platform/system/tools/mkbootimg
-git submodule update --depth=1
+git clone --depth 1 https://android.googlesource.com/platform/system/tools/mkbootimg
 echo "Init repository done"
 
 echo "Start dumping Oneplus 13 fw files"
