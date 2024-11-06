@@ -9,7 +9,7 @@ echo "Start downloading Oneplus 13 fw files"
 mkdir op13
 op13_partitions=("pvmfw" "vbmeta" "vbmeta_system" "vbmeta_vendor")
 for partition in "${op13_partitions[@]}"; do
-payload_dumper --partitions ${partition} --out op13 $OP13_ROM_URL
+python -m payload_dumper --partitions ${partition} --out op13 $OP13_ROM_URL
 echo "${partition} download finished."
 done
 echo "Download Oneplus 13 fw done."
@@ -20,7 +20,7 @@ mkdir opad
 
 opad_partitions=("system" "system_ext" "product" "vbmeta" "vbmeta_system" "vbmeta_vendor" "vendor_boot")
 for partition in "${opad_partitions[@]}"; do
-payload_dumper --partitions ${partition} --out opad $OPAD_ROM_URL
+python -m payload_dumper --partitions ${partition} --out opad $OPAD_ROM_URL
 echo "${partition} download finished."
 done
 echo "Download Oneplus Pad Pro fw done."
