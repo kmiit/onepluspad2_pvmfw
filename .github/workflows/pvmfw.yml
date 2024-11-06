@@ -3,8 +3,8 @@ name: Pvmfw Port Application
 on:
   workflow_dispatch:
     inputs:
-      op12Url:
-        description: 'OnePlus 12 ROM Url'
+      opadUrl:
+        description: 'OnePlus Pad Pro ROM Url'
         required: true
         type: string
       op13Url:
@@ -40,7 +40,7 @@ jobs:
       run: |
         bash run.sh
       env:
-        OP12_ROM_URL: ${{ inputs.op12Url }}
+        OPAD_ROM_URL: ${{ inputs.opadUrl }}
         OP13_ROM_URL: ${{ inputs.op13Url }}
 
     - name: Upload build artifact
